@@ -1,21 +1,10 @@
 import React from 'react';
 import { useStyles } from './styles';
 import BackgroundImage from '../../assets/d01.jpg';
-import CircularProgressWithLabel from '../ProgressCircle';
-import { AppCtx } from '../../context/GlobalContext';
+import ProgressCircle from '../ProgressCircle';
 
-
-type Props = {
-    progress: number | undefined
-};
-
-
-function BackgroundImageProgressCircle({ progress }: Props) {
+function BackgroundImageProgressCircle() {
     const classes: any = useStyles();
-    if (progress == undefined){
-        progress = 0;
-    }
-
 
     return (
         <div
@@ -25,7 +14,7 @@ function BackgroundImageProgressCircle({ progress }: Props) {
                 objectFit: 'contain',
             }}
         >
-            <CircularProgressWithLabel value={progress} />
+            <ProgressCircle />
         </div >
     )
 }
