@@ -4,14 +4,14 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useStyles } from './styles';
 
-function CircularProgressWithLabel(
+export default function CircularProgressWithLabel(
     props: CircularProgressProps & { value: number },
 ) {
     const classes: any = useStyles();
-    
+
     return (
         <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-            <CircularProgress thickness={1} size={5} style={{width: 181, height: 181, color:"white"}} variant="determinate" {...props} />
+            <CircularProgress thickness={1} size={5} style={{ width: 181, height: 181, color: "white" }} variant="determinate" {...props} />
             <Box
                 sx={{
                     top: 0,
@@ -25,26 +25,11 @@ function CircularProgressWithLabel(
                 }}
             >
                 <Typography
-                    style={{color: 'white'}}
+                    style={{ color: 'white' }}
                     variant="caption"
                     component="div"
-                >{`06/21 ${Math.round(props.value)}%`}</Typography>
+                >{`${Math.round(props.value)}%`}</Typography>
             </Box>
         </Box>
     );
-}
-
-export default function ProgressCircle() {
-    const [progress, setProgress] = React.useState(15);
-
-    React.useEffect(() => {
-        const timer = setInterval(() => {
-            setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
-        }, 800);
-        return () => {
-            clearInterval(timer);
-        };
-    }, []);
-
-    return <CircularProgressWithLabel value={progress} />;
 }

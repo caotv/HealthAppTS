@@ -8,6 +8,7 @@ import {
 } from 'recharts';
 import { useStyles } from './styles';
 
+
 function usehooksHoc(Component: any) {
   return (props: any) => {
     const clases: any = useStyles();
@@ -79,8 +80,12 @@ class CLineChart extends PureComponent {
     super(props);
   }
 
+
   render() {
+    const appContext = this.context;
+    console.log(appContext);
     const props: any = this.props;
+    console.log(props.classes.container);
     return (
       <div className={props.classes.container}>
         <ResponsiveContainer width="70%" height={312}>
